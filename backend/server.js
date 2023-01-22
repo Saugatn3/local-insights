@@ -13,6 +13,7 @@ const io = require('socket.io')(http,{
 const authRouter = require("./routes/auth");
 const searchRouter = require("./routes/search");
 const otpRouter = require("./routes/otp");
+const eventsRouter = require("./routes/event")
 
 //importing config
 const { MONGODB_URI, port } = require("./config.js");
@@ -31,6 +32,7 @@ app.get("/", async (req, res) => {
   res.send("LOCAL INSIGHTS");
 });
 app.use("/search", searchRouter);
+app.use("/event", eventsRouter);
 
 
 let guides = new Set(); // to keep track of connected guides
